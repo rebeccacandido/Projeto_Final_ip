@@ -12,5 +12,13 @@ def ola():
 def sobre_equipe():
     return render_template("sobre.html")
 
+@app.route("/gemini.html")
+def gemini():
+    return render_template("gemini.html")
+
+@app.route("/glossario.html")
+def glossario():
+    return render_template("glossario.html")
+
 
 app.run()
