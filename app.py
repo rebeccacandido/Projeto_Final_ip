@@ -1,6 +1,4 @@
 import csv
-import os
-import google.generativeai as genai
 from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__)
@@ -8,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def ola():
     # return '<h1>Olá, Mundo!</h1>'
-    return render_template('index.html')
+    return render_template('index.html') #aaaaa
 
 @app.route('/sobre-equipe')
 def sobre_equipe():
