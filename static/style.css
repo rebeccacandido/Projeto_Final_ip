@@ -1,0 +1,122 @@
+body {
+    background-color: #181a1b;
+    color: #f8f9fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2, h3 {
+    color: #ffc107;
+    margin-top: 24px;
+}
+.cabeca{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+}
+
+.time{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.5em;
+
+}
+.sobree{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 3.5em;
+
+}
+.ombro{
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+
+}
+.logo-pequena {
+    height: 40px;
+    width: auto;
+}
+
+.nav {
+    margin-bottom: 32px;
+    font-size: 1.5em;
+    background: #23272b;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.nav-link {
+    color: #f8f9fa !important;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: #ffc107 !important;
+}
+
+form {
+    margin: 24px 0;
+    padding: 16px;
+    background: #23272b;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #343a40;
+    border-radius: 4px;
+    background: #181a1b;
+    color: #f8f9fa;
+    margin-bottom: 12px;
+}
+
+button {
+    background: #ffc107;
+    color: #23272b;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #ffcd39;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+table {
+    width: 100%;
+    background: #23272b;
+    color: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 24px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #343a40;
+}
+
+th {
+    background: #181a1b;
+    color: #ffc107;
+}
