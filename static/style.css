@@ -120,3 +120,19 @@ th {
     background: #181a1b;
     color: #ffc107;
 }
+
+.fundamentos1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 2.5em;
+
+}
+.fundamentos2{
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    font-size: 1.5em;
+}
