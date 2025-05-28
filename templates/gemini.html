@@ -1,13 +1,13 @@
 {% extends "modelo.html" %}
 {%block conteudo%}
-from google import genai
+<h2>Pergunte algo sobre programação</h2>
+<form method="POST">
+    <input type="text" name="pergunta" required>
+    <button type="submit">Enviar</button>
+</form>
 
-client = genai.Client(api_key="YOUR_API_KEY")
-
-response = client.models.generate_content(
-    model="gemini-2.0-flash",
-    contents="Explain how AI works in a few words",
-)
-
-print(response.text)
+{% if resposta %}
+    <h3>Resposta:</h3>
+    <p>{{ resposta }}</p>
+{% endif %}
 {%endblock%}

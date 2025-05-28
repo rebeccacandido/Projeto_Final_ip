@@ -1,0 +1,31 @@
+{% extends "modelo.html" %}
+
+{%block conteudo%}
+<h2>Fundamentos de Programação em Python</h2>
+
+<h3>1. Estruturas de Seleção</h3>
+<p>Permitem decisões com if, elif, else.</p>
+<pre><code>if x > 10:
+    print(\"Maior que 10\")</code></pre>
+
+<h3>2. Estruturas de Repetição</h3>
+<p>Executam blocos várias vezes.</p>
+<pre><code>for i in range(5):
+    print(i)</code></pre>
+
+<h3>3. Vetores e Matrizes</h3>
+<p>Listas unidimensionais e listas de listas.</p>
+<pre><code>lista = [1, 2, 3]
+matriz = [[1,2], [3,4]]</code></pre>
+
+<h3>4. Funções e Procedimentos</h3>
+<pre><code>def saudacao():
+    print(\"Olá!\")</code></pre>
+
+<h3>5. Tratamento de Exceções</h3>
+<pre><code>try:
+    x = int(input(\"Digite um número: \"))
+except ValueError:
+    print(\"Valor inválido!\")</code></pre>
+
+{%endblock%}
