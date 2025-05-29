@@ -2,6 +2,7 @@ import csv
 import os
 import google.generativeai as genai
 from flask import Flask, render_template, request, url_for, redirect
+from urllib.parse import unquote
 
 app = Flask(__name__)
 
@@ -14,13 +15,21 @@ def ola():
 def sobre_equipe():
     return render_template('sobre.html')
 
-@app.route('/gemini')
+genai.configure(api_key="GEMINI_API_KEY")
+
+@app.route('/gemini', methods=["GET", "POST"])
 def gemini():
     resposta = ""
     if request.method == "POST":
         pergunta = request.form["pergunta"]
-        resposta = f"(Exemplo) Resposta para: {pergunta}"
+        try:
+            modelo = genai.GenerativeModel(model_name="gemini-2.0-flash")
+            resposta_gemini = modelo.generate_content(pergunta)
+            resposta = resposta_gemini.text
+        except Exception as e:
+            resposta = f"Erro ao acessar a IA: {e}"
     return render_template("gemini.html", resposta=resposta)
+
 
 @app.route("/fundamentos")
 def fundamentos():
@@ -29,16 +38,17 @@ def fundamentos():
 
 @app.route('/glossario')
 def glossario():
-
     glossario_de_termos = []
 
-    with open('bd_glossario.csv', newline='', encoding='utf-8') as csvfile:
-        reader = csv.reader(csvfile, delimiter=';')
-
-        for t in reader:
-            glossario_de_termos.append(t)
+    if os.path.exists('bd_glossario.csv'):
+        with open('bd_glossario.csv', newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile, delimiter=';')
+            for t in reader:
+                if len(t) == 2:
+                    glossario_de_termos.append(t)
 
     return render_template('glossario.html', glossario=glossario_de_termos)
+
 
 
 
@@ -49,15 +59,42 @@ def novo_termo():
 
 @app.route('/criar_termo', methods=['POST'])
 def criar_termo():
+    termo = request.form['termo'].strip()
+    definicao = request.form['definicao'].strip()
 
-    termo = request.form['termo']
-    definicao = request.form['definicao']
+    if os.path.exists('bd_glossario.csv'):
+        with open('bd_glossario.csv', newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile, delimiter=';')
+            for linha in reader:
+                if linha and linha[0].lower() == termo.lower():
+                    return redirect(url_for('glossario'))
 
-    with open('bd_glossario.csv', 'a', newline='', encoding='utf-8') as csvfile:
-        writer = csv.writer(csvfile, delimiter=';')
-        writer.writerow([termo, definicao])
+    if termo and definicao:
+        with open('bd_glossario.csv', 'a', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile, delimiter=';')
+            writer.writerow([termo, definicao])
+
+    return redirect(url_for('glossario'))
+
+@app.route('/deletar_termo/<termo>')
+def deletar_termo(termo):
+    termo_decodificado = unquote(termo).strip().lower()
+    termos_atualizados = []
+
+    if os.path.exists('bd_glossario.csv'):
+        with open('bd_glossario.csv', newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile, delimiter=';')
+            for linha in reader:
+                if linha and linha[0].strip().lower() != termo_decodificado:
+                    termos_atualizados.append(linha)
+
+        with open('bd_glossario.csv', 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile, delimiter=';')
+            writer.writerows(termos_atualizados)
 
     return redirect(url_for('glossario'))
 
 
-app.run(debug=True)
+
+if __name__ == '__main__':
+    app.run(debug=True)

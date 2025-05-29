@@ -1,13 +1,14 @@
 {% extends "modelo.html" %}
+
 {%block conteudo%}
 <h2>Pergunte algo sobre programação</h2>
 <form method="POST">
     <input type="text" name="pergunta" required>
-    <button type="submit">Enviar</button>
+    <button type="submit">Perguntar</button>
 </form>
 
 {% if resposta %}
     <h3>Resposta:</h3>
     <p>{{ resposta }}</p>
 {% endif %}
-{%endblock%}
+{% endblock %}
