@@ -372,4 +372,7 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+echo .env >> .gitignore
+
+
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,python,flask

@@ -3,6 +3,7 @@ import os
 import google.generativeai as genai
 from flask import Flask, render_template, request, url_for, redirect
 from urllib.parse import unquote
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 

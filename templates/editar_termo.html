@@ -1,7 +1,16 @@
 {% extends "modelo.html" %}
 
 {%block conteudo%}
-
+<h1>Editar Termo</h1>
+    <form action="{{ url_for('atualizar_termo') }}" method="post">
+        <input type="hidden" name="termo_original" value="{{ termo }}">
+        <label for="termo">Termo:</label>
+        <input type="text" id="termo" name="termo" value="{{ termo }}" required><br><br>
+        <label for="definicao">Definição:</label><br>
+        <textarea id="definicao" name="definicao" rows="4" cols="50" required>{{ definicao }}</textarea><br><br>
+        <input type="submit" value="Atualizar">
+    </form>
+    <a href="{{ url_for('glossario') }}">Voltar ao Glossário</a>
 
 
 
