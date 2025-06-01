@@ -22,12 +22,10 @@
         <form action="{{ url_for('apagar_termo', termo=termo[0]) }}" method="post" style="display:inline;">
           <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja apagar este termo?');">Apagar</button>
         </form>
-        <!-- Botão para abrir o modal de edição -->
 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ loop.index }}">
   Editar
 </button>
 
-<!-- Modal de edição -->
 <div class="modal fade" id="editarModal{{ loop.index }}" tabindex="-1" aria-labelledby="editarModalLabel{{ loop.index }}" aria-hidden="true">
   <div class="modal-dialog">
     <form action="{{ url_for('editar_termo', termo_antigo=termo[0]) }}" method="post">
