@@ -16,7 +16,7 @@ def ola():
 def sobre_equipe():
     return render_template('sobre.html')
 
-genai.configure(api_key="AIzaSyCkM4cI7nLLfTO7D-0ocPLgJajTH8sfdLk")
+genai.configure(api_key="GEMINI_API_KEY")
 
 @app.route('/gemini', methods=["GET", "POST"])
 def gemini():
@@ -87,6 +87,29 @@ def apagar_termo(termo):
             reader = csv.reader(csvfile, delimiter=';')
             for linha in reader:
                 if linha and linha[0].strip().lower() != termo:
+                    termos_atualizados.append(linha)
+
+        with open('bd_glossario.csv', 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile, delimiter=';')
+            writer.writerows(termos_atualizados)
+
+    return redirect(url_for('glossario'))
+
+@app.route('/editar_termo/<termo_antigo>', methods=['POST'])
+def editar_termo(termo_antigo):
+    novo_termo = request.form['novo_termo'].strip()
+    nova_definicao = request.form['nova_definicao'].strip()
+    termo_antigo = termo_antigo.strip().lower()
+
+    termos_atualizados = []
+
+    if os.path.exists('bd_glossario.csv'):
+        with open('bd_glossario.csv', newline='', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile, delimiter=';')
+            for linha in reader:
+                if linha and linha[0].strip().lower() == termo_antigo:
+                    termos_atualizados.append([novo_termo, nova_definicao])
+                else:
                     termos_atualizados.append(linha)
 
         with open('bd_glossario.csv', 'w', newline='', encoding='utf-8') as csvfile:
