@@ -16,7 +16,7 @@ def ola():
 def sobre_equipe():
     return render_template('sobre.html')
 
-genai.configure(api_key="AIzaSyCkM4cI7nLLfTO7D-0ocPLgJajTH8sfdLk")
+genai.configure(api_key="GEMINI_API_KEY")
 
 @app.route('/gemini', methods=["GET", "POST"])
 def gemini():
