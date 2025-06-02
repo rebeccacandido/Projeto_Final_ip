@@ -19,7 +19,7 @@
       <td>{{ termo[0] }}</td>
       <td>{{ termo[1] }}</td>
       <td>
-        <form action="{{ url_for('apagar_termo', termo=termo[0]) }}" method="post" style="display:inline;">
+        <form action="{{ url_for('apagar_termo', termo=termo[0]) }}" method="post" style="display:inline; background-color: transparent;">
           <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja apagar este termo?');">Apagar</button>
         </form>
 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ loop.index }}">
