@@ -1,6 +1,9 @@
 # Projeto Final – Introdução à Programação
+**Colaboradores:**  
+Bruno de Araújo, Rebecca Cândido, Kaike Araújo e Caio Simões
 
-Este projeto é uma aplicação web desenvolvida como trabalho final da disciplina **Introdução à Programação**, utilizando o microframework **Flask** em Python. A aplicação consiste em um **glossário interativo**, onde o usuário pode adicionar, visualizar e excluir termos e suas definições.
+Este projeto é uma aplicação web desenvolvida como trabalho final da disciplina **Introdução à Programação**, utilizando o framework **Flask** em Python. O objetivo é apresentar os principais conceitos de programação aplicados em um sistema real e funcional.
+Desenvolvido como parte da disciplina de **Introdução à Programação – Curso de Ciência da Computação**.
 
 ## 📚 Funcionalidades
 
@@ -8,7 +11,9 @@ Este projeto é uma aplicação web desenvolvida como trabalho final da discipli
 - ➕ **Adicionar termo**: Formulário para inserir um novo termo e sua definição. Termos duplicados não são permitidos.
 - ❌ **Excluir termo**: Cada termo listado possui um botão "Apagar", permitindo sua remoção do glossário com confirmação.
 - 💾 **Persistência em arquivo**: Todos os dados são armazenados no arquivo `bd_glossario.csv` com separador `;`.
+ 🤖 **Integração com IA**: O sistema inclui uma página que permite perguntar dúvidas sobre programação para a IA Google Gemini.
 
+---
 ## 🛠️ Tecnologias Utilizadas
 
 - **Python 3**
@@ -53,9 +58,6 @@ Projeto_Final_ip_cc/
    ```bash
    flask run
    ```
-
-4. Acesse no navegador:  
-   `http://127.0.0.1:5000/glossario`
 
 ## 📝 Observações
 
